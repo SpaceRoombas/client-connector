@@ -1,0 +1,6 @@
+[submodule "Telepathy"]
+	path = Telepathy
+	url = https://github.com/SpaceRoombas/Telepathy.git
+[submodule "flatbuffers"]
+	path = flatbuffers
+	url = https://github.com/SpaceRoombas/flatbuffers.git
