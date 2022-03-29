@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace client_connector
+namespace ClientConnector.messages
 {
-    public class ClientConnector
+    public class MappedMessage
     {
+        public Type MessageType;
     }
 }

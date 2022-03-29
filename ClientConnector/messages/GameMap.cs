@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace client_connector_test
+namespace ClientConnector.messages
 {
-    class Program
+    class GameMap : MappedMessage
     {
-        static void Main(string[] args)
+        GameMap()
         {
+            this.MessageType = this.GetType();
         }
     }
 }
