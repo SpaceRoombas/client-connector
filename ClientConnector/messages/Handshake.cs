@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace ClientConnector.messages
 {
-    class Handshake
+    public class Handshake
     {
         public const int STATUS_OK = 200;
         public const int STATUS_ORPHAN_OK = 201;
         public const int STATUS_VERIFY_FAILED = 403;
 
-        public string username;
-        public string signature;
-        public int status;
+        [JsonPropertyName("username")]
+        public string username { get; set; }
+        [JsonPropertyName("signature")]
+        public string signature { get; set; }
+        [JsonPropertyName("status")]
+        public int status { get; set; }
 
         public Handshake()
         {

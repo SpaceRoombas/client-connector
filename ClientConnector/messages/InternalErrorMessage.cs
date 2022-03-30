@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace ClientConnector.messages
 {
-    class GameMap : MappedMessage
+    public class InternalErrorMessage
     {
-        GameMap()
+        public string message;
+
+        public InternalErrorMessage(string message)
         {
-            this.MessageType = this.GetType();
+            this.message = message;
         }
     }
 }
