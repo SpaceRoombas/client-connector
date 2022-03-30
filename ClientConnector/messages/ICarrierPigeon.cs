@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace ClientConnector.messages
 {
-    public class MappedMessage
+    public interface ICarrierPigeon
     {
-        public Type MessageType;
+        string GetPayloadType();
+        string GetMessageType();
+
+        void SetPayloadObject(object payload);
     }
 }

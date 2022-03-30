@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
-namespace ClientConnector.data
+namespace ClientConnector.messages
 {
     /**
      * 
@@ -14,12 +15,17 @@ namespace ClientConnector.data
      * */
     public class PlayerDetails
     {
-        public string PlayerName;
-        public string ServerAddress;
-        public int TokenTimeMillis;
-        public int MatchEndTimeMillis;
+        [JsonPropertyName("player_name")]
+        public string PlayerName { get; set; }
+        [JsonPropertyName("server_address")]
+        public string ServerAddress { get; set; }
+        [JsonPropertyName("token_millis")]
+        public int TokenTimeMillis { get; set; }
+        [JsonPropertyName("match_end_millis")]
+        public int MatchEndTimeMillis { get; set; }
         // This will most likely be the resulting HMAC hash of 
         // PlayerName+ServerAddress+TokenTimeMillis+MatchEndTimeMillis 
-        public string HMACString;
+        [JsonPropertyName("signature")]
+        public string HMACString { get; set; }
     }
 }
