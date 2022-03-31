@@ -28,7 +28,8 @@ namespace ClientConnector
         {
             this.carrierTypes = new Dictionary<string, Func<ICarrierPigeon>>();
             this.carrierTypes.Add("Handshake", () => new CarrierPigeon<Handshake>(null, "Handshake", "handshake"));
-            this.carrierTypes.Add("PlayerDetails", () => new CarrierPigeon<PlayerDetails>(null, "PlayerDetails", "handshake"));
+            this.carrierTypes.Add("PlayerDetails", () => new CarrierPigeon<PlayerDetails>(null, "player_details", "handshake"));
+            this.carrierTypes.Add("PlayerFirmwareChange", () => new CarrierPigeon<PlayerFirmwareChange>(null, "firmware_change", "message"));
         }
 
         private Type resolvePayloadType(string json)
