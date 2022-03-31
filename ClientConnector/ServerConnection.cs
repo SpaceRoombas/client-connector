@@ -140,7 +140,6 @@ namespace ClientConnector
         // Sends handshake to game server
         private void HandleConnect()
         {
-            CarrierPigeon<PlayerDetails> handshake = new CarrierPigeon<PlayerDetails>(this.playerDetails, "player_details", "handshake");
             string serializedHandshake;
             ArraySegment<byte> handshakeBuff;
             
@@ -148,7 +147,7 @@ namespace ClientConnector
             this._mode = ConnectionMode.Handshaking;
 
             // send handshake
-            serializedHandshake = serializer.SerializeMessage(handshake);
+            serializedHandshake = serializer.SerializeObject(this.playerDetails);
             handshakeBuff = Util.StringToByteSegment(serializedHandshake);
             client.Send(handshakeBuff);
         }

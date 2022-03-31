@@ -35,7 +35,12 @@ namespace ClientConnector.messages
 
         public void SetPayloadObject(object payload)
         {
-            // TODO this could cause problems
+            // TODO this could cause problems, double check that empty payloads are handled in backend
+            if(payload.GetType() != typeof(T))
+            {
+                this.payload = default(T);
+                return;
+            }
             this.payload = (T) payload;
         }
     }

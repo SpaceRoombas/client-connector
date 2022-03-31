@@ -8,12 +8,14 @@ namespace ClientConnectorTest
 {
     class TestingRig
     {
+
+        const string PlayerId = "ARoomba";
         static void Main(string[] args)
         {
             ServerConnection serverConnection;
             PlayerDetails details = new PlayerDetails()
             {
-                PlayerName = "ARoomba",
+                PlayerName = PlayerId,
                 ServerAddress = "localhost",
                 MatchEndTimeMillis = 334563456,
                 TokenTimeMillis = 329923929,
@@ -45,17 +47,16 @@ namespace ClientConnectorTest
                     {
                         ICarrierPigeon carrier = serverConnection.DequeueMessage();
                         MapSector mapSector = PayloadExtractor.GetMapSector(carrier);
-                        PlayerDetails diffDetails = new PlayerDetails()
+                        PlayerFirmwareChange firmwareChange = new PlayerFirmwareChange()
                         {
-                            PlayerName = "ARoomba",
-                            ServerAddress = "localhost",
-                            MatchEndTimeMillis = 334563456,
-                            TokenTimeMillis = 329923929,
-                            HMACString = "L3KM45LQK234M5LQ2K34M"
-
+                            Code = "while(true){move_south() move_west()}",
+                            PlayerId = PlayerId,
+                            RobotId = "r0"
                         };
-                        serverConnection.EnqueueMessage(diffDetails);
-                        
+
+                        // send code change
+                        serverConnection.EnqueueMessage(firmwareChange);
+
                     }
                 }
 
